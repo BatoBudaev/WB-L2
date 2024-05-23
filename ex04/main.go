@@ -20,12 +20,11 @@ func findAnagrams(words []string) map[string][]string {
 		}
 	}
 
-	// Фильтрация групп, оставляя только те, которые содержат более одного слова
+	// Создаем карту результатов, где ключ - это первое слово из группы анаграмм
 	result := make(map[string][]string)
-	for sortedWord, group := range anagrams {
-		if len(group) > 1 {
-			result[sortedWord] = group
-		}
+	for _, group := range anagrams {
+		firstWord := group[0]     // Берем первое слово из группы
+		result[firstWord] = group // Используем его как ключ
 	}
 
 	return result
