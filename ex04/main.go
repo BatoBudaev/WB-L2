@@ -11,7 +11,7 @@ func findAnagrams(words []string) map[string][]string {
 	for _, word := range words {
 		loweredWord := strings.ToLower(word) // В нижний регистр
 		runeSlice := []rune(loweredWord)
-		sort.Slice(runeSlice, func(i, j int) bool { return runeSlice[i] < runeSlice[j] })
+		sort.Slice(runeSlice, func(i, j int) bool { return runeSlice[i] < runeSlice[j] }) // Сортировка символов строки в алфавитном порядке
 		sortedWord := string(runeSlice)
 		if _, exists := anagrams[sortedWord]; !exists {
 			anagrams[sortedWord] = []string{loweredWord}
@@ -29,13 +29,6 @@ func findAnagrams(words []string) map[string][]string {
 	}
 
 	return result
-}
-
-// Сортирует символы строки в алфавитном порядке
-func sortWords(s string) string {
-	bytes := []byte(s)
-	sort.Slice(bytes, func(i, j int) bool { return bytes[i] < bytes[j] })
-	return string(bytes)
 }
 
 func main() {
